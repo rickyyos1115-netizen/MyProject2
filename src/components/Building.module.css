@@ -1,0 +1,161 @@
+.building {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.sprite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 3px 4px rgba(28, 43, 51, 0.25));
+}
+
+.roof {
+  width: 78%;
+  height: 10px;
+  background: var(--roof);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.body {
+  position: relative;
+  width: 70%;
+  background: var(--body);
+  border-radius: 2px 2px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  gap: 3px;
+  padding: 5px 4px 0;
+}
+
+.window {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 1px;
+  opacity: 0.9;
+}
+
+.door {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 10px;
+  background: rgba(28, 43, 51, 0.35);
+  border-radius: 2px 2px 0 0;
+}
+
+.flag {
+  position: absolute;
+  top: -14px;
+  right: 2px;
+  width: 3px;
+  height: 12px;
+  background: var(--roof);
+}
+
+.flag::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 3px;
+  width: 8px;
+  height: 5px;
+  background: var(--accent);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.lv1 .body {
+  height: 28px;
+}
+
+.lv1 .roof {
+  height: 9px;
+}
+
+.lv2 .body {
+  height: 40px;
+  width: 78%;
+}
+
+.lv2 .roof {
+  width: 88%;
+  height: 12px;
+}
+
+.lv3 .body {
+  height: 54px;
+  width: 86%;
+}
+
+.lv3 .roof {
+  width: 96%;
+  height: 14px;
+}
+
+.tag {
+  margin-top: 2px;
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: rgba(28, 43, 51, 0.75);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1px 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.amount {
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.buildAnim {
+  animation: popIn 0.55s cubic-bezier(0.22, 1.4, 0.36, 1);
+}
+
+.mergeAnim {
+  animation: mergeFlash 0.7s ease;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.4);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.08);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mergeFlash {
+  0% {
+    transform: scale(0.6);
+    filter: brightness(1.8);
+  }
+  40% {
+    transform: scale(1.2);
+    filter: brightness(1.3);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
